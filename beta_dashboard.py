@@ -1,4 +1,5 @@
 import dash
+import os
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.graph_objs as go
@@ -105,4 +106,6 @@ def update_output(a1, b1, a2, b2, n_clicks):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    port = int(os.environ.get('PORT', 8050))  # Render dynamically sets the port
+    app.run_server(host='0.0.0.0', port=port)
+
